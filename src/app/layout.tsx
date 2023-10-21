@@ -4,6 +4,7 @@ import { Roboto_Mono } from 'next/font/google'
 import { Lobster_Two } from 'next/font/google'
 import Header from './components/header'
 import Footer from './components/footer'
+import AuthProvider from "@/app/contexts/AuthProvider";
 
 
 export const lobster = Lobster_Two({ weight:"700", subsets: ['latin']})
@@ -22,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ roboto_mono.className + ' container mx-auto bg-slate-200'}>
-        {children}
-        <Footer/>
+        <AuthProvider>
+            {children}
+            <Footer/>
+        </AuthProvider>
       </body>
     </html>
   )
