@@ -2,10 +2,14 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Link from 'next/link'
-import {signIn} from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
+import {useEffect} from "react";
+import {redirect} from "next/navigation";
 
 
 const Login = () => {
+
+    const {data: session} = useSession();
 
     const handleContinueWithGoogle = () => {
         signIn("google").then(r => {})
@@ -14,6 +18,13 @@ const Login = () => {
     const handleContinueWithFacebook = () => {
         signIn("facebook").then(r => {})
     }
+
+    useEffect(() => {
+        if(session) console.log("session: ", Object.keys(session))
+
+        if(session?.user) redirect("/home")
+
+    }, [])
 
     return (
         <div className="h-full py-5 px-10">
