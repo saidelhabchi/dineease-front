@@ -1,19 +1,20 @@
-
-import { redirect } from "next/navigation";
-import { lobster } from "../layout";
 import LoginButton from "./loginButton";
 import Logo from "./logo";
 import LogoutButton from "@/app/components/logoutButton";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 
-const Header = (props) => {
+const Header = async () => {
 
-    console.log(props)
+    const session = await getServerSession(authOptions);
+
+    console.log(session)
 
     return ( 
         <header className="flex justify-between items-center h-20 border-b border-green-800 border-opacity-50">
             <Logo/>
             {
-                props.session  ?
+                Object.keys(session).length > 0  ?
                     <LogoutButton/>
                     :
                     <LoginButton/>
