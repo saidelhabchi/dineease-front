@@ -20,9 +20,31 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if(session) console.log("session: ", Object.keys(session))
+        if (session) console.log("session: ", session)
+        if (session) console.log("session string: ", JSON.stringify(session?.user))
 
-        if(session?.user) redirect("/home")
+        if (session?.user) {
+            fetch(
+                `/api/oauth/connect`,
+                {
+                    method: 'POST',
+                    headers: {'Content-Type': "application/json"},
+                    body: JSON.stringify(session?.user)
+                }
+            ).then(r => {
+                return r.json()
+            }
+            ).then(data => {
+                console.log(data)
+            })
+
+
+            /**
+             * TODO: store data.token in local storage.
+             */
+
+            redirect("/home")
+        }
 
     }, [])
 
