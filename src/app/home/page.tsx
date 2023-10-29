@@ -1,4 +1,5 @@
-const HomePage = () => {
+const HomePage = (props) => {
+
     return ( 
         <div className="flex flex-col border justify-center items-center">
             <div className='flex justify-center items-center h-60 w-full border mt-20 mb-5'>
