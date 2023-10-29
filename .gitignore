@@ -36,5 +36,17 @@ yarn.lock
 *.tsbuildinfo
 next-env.d.ts
 
+# env
+.env
+
+# yarn
+yarn.lock
+
+# IDEA
+.idea
+
+# IDEA
+.idea
+
 #idea
 .idea
