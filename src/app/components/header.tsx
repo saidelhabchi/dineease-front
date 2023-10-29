@@ -14,7 +14,7 @@ const Header = async () => {
         <header className="flex justify-between items-center h-20 border-b border-green-800 border-opacity-50">
             <Logo/>
             {
-                Object.keys(session).length > 0  ?
+                session && Object.keys(session).length > 0  ?
                     <LogoutButton/>
                     :
                     <LoginButton/>
