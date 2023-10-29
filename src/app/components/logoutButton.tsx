@@ -11,6 +11,10 @@ function LogoutButton(props) {
             signOut({ callbackUrl: `http://localhost:3000/authentication/login` })
                 .then(r => {})
         }
+
+        if(window.localStorage.getItem("token-auth")){
+            window.localStorage.removeItem("token-auth");
+        }
     }
 
     return (

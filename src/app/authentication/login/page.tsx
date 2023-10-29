@@ -36,12 +36,13 @@ const Login = () => {
             }
             ).then(data => {
                 console.log(data)
+
+                /**
+                 * TODO: store data.token in local storage.
+                 */
+
+                window.localStorage.setItem("token-auth", data.token)
             })
-
-
-            /**
-             * TODO: store data.token in local storage.
-             */
 
             redirect("/home")
         }
